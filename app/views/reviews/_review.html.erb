@@ -1,0 +1,12 @@
+  <div class="review-rating" data-score=<%= review.rating %>></div> 
+  <h3>Rating:</h3><%= review.rating %></br></br>
+  <div class="well">
+  <h3>Comment:</h3><%= review.comment%></br>
+  </div>
+  <% if user_signed_in? %>
+     <%if review.user_id== current_user.id %>
+     <%= link_to "Edit" ,edit_book_review_path(review.book,review ),class:"btn btn-primary btn-xs"%>
+     <%= link_to "Delete" ,book_review_path(review.book,review),method: :delete,data: {confirm: "Are you sure?"},class:"btn btn-primary btn-xs"%>
+<hr>
+<% end %>
+<% end %>

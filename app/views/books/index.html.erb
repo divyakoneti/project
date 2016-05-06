@@ -1,0 +1,28 @@
+<div class="container">
+<h2>ListOfBooks</h2>
+<div class = "container col-md-12">
+
+<hr> 
+<h1 class="current_category"><%= params[:category] %></h1> 
+<% if @books.count==0 %>
+ <h2> no books available </h2>
+<% else %>
+
+<% @books.each do |book| %>
+
+<p><b>Title: </b><%= book.title %><br></p>
+
+<p><b>Author: </b><%= book.author %><br></p>
+<p><b>Description: </b><%= book.description %><br></p>
+<p><b>Image</b>
+<div class="background-tile">
+  <%= image_tag book.image_url, class:"img-rounded"if book.image? %><br></p>
+</div></p></br>
+ <%= link_to "Edit" ,edit_book_path(book.id) ,class: "btn btn-primary"%>
+<%= link_to "delete" ,book_path(book.id),method: :delete,data: {confirm: "are you sure "},class: "btn btn-primary" %>
+<%= link_to "show",book_path(book.id),class: "btn btn-primary" %>
+</p>
+<% end %>
+<% end %>
+</div>
+
